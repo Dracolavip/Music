@@ -3,9 +3,6 @@ from os import getenv
 
 from dotenv import load_dotenv
 from pyrogram import filters
-from asBASE import asJSON
-
-db = asJSON("as.json")
 
 load_dotenv()
 
