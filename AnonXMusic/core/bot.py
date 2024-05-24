@@ -14,6 +14,9 @@ class Anony(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             bot_token=config.BOT_TOKEN,
+            in_memory=True,
+            parse_mode=ParseMode.HTML,
+            max_concurrent_transmissions=7,
         )
 
     async def start(self):
@@ -26,7 +29,7 @@ class Anony(Client):
         try:
             await self.send_message(
                 chat_id=config.LOGGER_ID,
-                text=f"ꨄ <u><b>» {self.mention} تم تشغيل البوت بنجاح . :</b><u>\n\nꨄ 𝒊𝑫 : <code>{self.id}</code>\nꨄ 𝑵𝒆𝒎𝒆 : {self.name}\nꨄ 𝑼𝒔𝒆𝒓𝑵𝒆𝒎𝒆 : @{self.username}",
+                text=f"<u><b>» {self.mention} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ :</b><u>\n\nɪᴅ : <code>{self.id}</code>\nɴᴀᴍᴇ : {self.name}\nᴜsᴇʀɴᴀᴍᴇ : @{self.username}",
             )
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
             LOGGER(__name__).error(
@@ -39,6 +42,12 @@ class Anony(Client):
             )
             exit()
 
+        a = await self.get_chat_member(config.LOGGER_ID, self.id)
+        if a.status != ChatMemberStatus.ADMINISTRATOR:
+            LOGGER(__name__).error(
+                "Please promote your bot as an admin in your log group/channel."
+            )
+            exit()
         LOGGER(__name__).info(f"Music Bot Started as {self.name}")
 
     async def stop(self):

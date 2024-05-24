@@ -51,29 +51,29 @@ class Userbot(Client):
         if config.STRING1:
             await self.one.start()
             try:
-                await self.one.join_chat("GoRuP_ElBoSs")
-                await self.one.join_chat("SoURce_EIBoSs")
+                await self.one.join_chat("DevilsHeavenMF")
+                await self.one.join_chat("FallenAssociation")
             except:
                 pass
             assistants.append(1)
-            get_me = await self.one.get_me()
-            self.one.username = get_me.username
-            self.one.id = get_me.id
-            assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.one.name = (
-                    get_me.first_name + " " + get_me.last_name
+            try:
+                await self.one.send_message(config.LOGGER_ID, "Assistant Started")
+            except:
+                LOGGER(__name__).error(
+                    "Assistant Account 1 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin!"
                 )
-            else:
-                self.one.name = get_me.first_name
-            LOGGER(__name__).info(
-                f"Assistant Started as {self.one.name}"
-            )
+                exit()
+            self.one.id = self.one.me.id
+            self.one.name = self.one.me.mention
+            self.one.username = self.one.me.username
+            assistantids.append(self.one.id)
+            LOGGER(__name__).info(f"Assistant Started as {self.one.name}")
+
         if config.STRING2:
             await self.two.start()
             try:
-                await self.two.join_chat("GoRuP_ElBoSs")
-                await self.one.join_chat("SoURce_EIBoSs")
+                await self.two.join_chat("DevilsHeavenMF")
+                await self.two.join_chat("FallenAssociation")
             except:
                 pass
             assistants.append(2)
@@ -93,8 +93,8 @@ class Userbot(Client):
         if config.STRING3:
             await self.three.start()
             try:
-                await self.three.join_chat("GoRuP_ElBoSs")
-                await self.one.join_chat("SoURce_EIBoSs")
+                await self.three.join_chat("DevilsHeavenMF")
+                await self.three.join_chat("FallenAssociation")
             except:
                 pass
             assistants.append(3)
@@ -114,8 +114,8 @@ class Userbot(Client):
         if config.STRING4:
             await self.four.start()
             try:
-                await self.four.join_chat("GoRuP_ElBoSs")
-                await self.one.join_chat("SoURce_EIBoSs")
+                await self.four.join_chat("DevilsHeavenMF")
+                await self.four.join_chat("FallenAssociation")
             except:
                 pass
             assistants.append(4)
@@ -135,8 +135,8 @@ class Userbot(Client):
         if config.STRING5:
             await self.five.start()
             try:
-                await self.five.join_chat("GoRuP_ElBoSs")
-                await self.one.join_chat("SoURce_EIBoSs")
+                await self.five.join_chat("DevilsHeavenMF")
+                await self.five.join_chat("FallenAssociation")
             except:
                 pass
             assistants.append(5)
