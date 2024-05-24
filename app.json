@@ -46,7 +46,7 @@
         "description": "ضـع ايـدي الـحـسـاب الـمـسـاعـد",
         "value": "",
         "required": true
-      },
+      }
     },
     "buildpacks": [
           {
